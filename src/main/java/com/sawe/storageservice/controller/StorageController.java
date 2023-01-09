@@ -24,10 +24,10 @@ public class StorageController {
         return ResponseEntity.status(HttpStatus.OK).body(uploadImage);
     }
 
-    @GetMapping("/download-image")
+    @GetMapping("/{filename}")
     public ResponseEntity<?> downloadImage(@PathVariable String filename){
         byte[] imageData = storageService.dowloadImage(filename);
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/png"))
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/jpg"))
                 .body(imageData);
     }
 }
