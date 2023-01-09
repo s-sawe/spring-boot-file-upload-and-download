@@ -20,7 +20,7 @@ public class FileStorageService {
     @Autowired
     private FileDataRepository fileRepository;
 
-    private final String FOLDER_PATH = "/Users/KEN20961/Desktop/MyFiles/"; //the path to the folder created on local-machine or server;
+    private final String FOLDER_PATH = "C:/Users/KEN20961/Desktop/MyFiles/"; //the path to the folder created on local-machine or server;
     public String uploadImageToFileSystem(MultipartFile file) throws IOException {
 
       String filePath = FOLDER_PATH + file.getOriginalFilename();

@@ -24,7 +24,7 @@ public class FileStorageController {
         return ResponseEntity.status(HttpStatus.OK).body(uploadImage);
     }
 
-    @GetMapping("/{filename}")
+    @GetMapping("/file/{filename}")
     public ResponseEntity<?> downloadImageFromFileSystem(@PathVariable String filename) throws IOException {
         byte[] imageData = storageService.dowloadImageFromFileSystem(filename);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/jpg"))
