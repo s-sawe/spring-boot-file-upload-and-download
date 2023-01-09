@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.awt.*;
 import java.io.IOException;
+import java.util.Optional;
 
 @Service
 public class StorageService {
@@ -29,5 +31,10 @@ public class StorageService {
        return null;
     }
 
+    public byte[] dowloadImage(String imageName){
+        Optional<ImageData> databaseImageData = repository.findByName(imageName);
+        byte[] image = ImageUtils.decompressImage(databaseImageData.get().getImageData());
+        return image;
+    }
 
 }
