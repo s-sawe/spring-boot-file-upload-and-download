@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/image")
 public class StorageController {
 
     @Autowired
@@ -25,8 +25,8 @@ public class StorageController {
     }
 
     @GetMapping("/{imagename}")
-    public ResponseEntity<?> downloadImage(@PathVariable String filename){
-        byte[] imageData = storageService.dowloadImage(filename);
+    public ResponseEntity<?> downloadImage(@PathVariable String imagename){
+        byte[] imageData = storageService.dowloadImage(imagename);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/jpg"))
                 .body(imageData);
     }
