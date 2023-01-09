@@ -1,7 +1,7 @@
 package com.sawe.storageservice.controller;
 
 
-import com.sawe.storageservice.service.StorageService;
+import com.sawe.storageservice.service.FileStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -13,20 +13,20 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping("/api/v1")
-public class StorageController {
+public class FileStorageController {
 
     @Autowired
-    private StorageService storageService;
+    private FileStorageService storageService;
 
-    @PostMapping("/upload-image")
-    public ResponseEntity<?> uploadImage(@RequestParam("image")MultipartFile file) throws IOException {
-        String uploadImage = storageService.uploadImage(file);
+    @PostMapping("/upload-file")
+    public ResponseEntity<?> uploadImageToFileSystem(@RequestParam("image") MultipartFile file) throws IOException {
+        String uploadImage = storageService.uploadImageToFileSystem(file);
         return ResponseEntity.status(HttpStatus.OK).body(uploadImage);
     }
 
-    @GetMapping("/{imagename}")
-    public ResponseEntity<?> downloadImage(@PathVariable String filename){
-        byte[] imageData = storageService.dowloadImage(filename);
+    @GetMapping("/{filename}")
+    public ResponseEntity<?> downloadImageFromFileSystem(@PathVariable String filename) throws IOException {
+        byte[] imageData = storageService.dowloadImageFromFileSystem(filename);
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.valueOf("image/jpg"))
                 .body(imageData);
     }
