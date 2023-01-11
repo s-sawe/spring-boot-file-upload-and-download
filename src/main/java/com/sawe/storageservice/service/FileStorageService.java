@@ -44,7 +44,7 @@ public class FileStorageService {
         Optional<FileData> fileData = fileRepository.findByName(fileName);
         String filePath = fileData.get().getFilePath(); //we're getting the path of the file stored in the db
         byte[] image = Files.readAllBytes(new File(filePath).toPath()); //converting the path to byte array
-        logger.info("Image download Completed "+ Arrays.toString(image));
+        logger.info("Image download Completed ");
         return image;
     }
 }

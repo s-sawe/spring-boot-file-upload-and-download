@@ -23,9 +23,7 @@
         <repository>
             <id>splunk-artifactory</id>
             <name>Splunk Releases</name>
-            <url>https://splunk.jfrog.io/artifactory/libs-releases</url>
-           <!-- <url>https://mvnrepository.com/artifact/com.splunk.logging/splunk-library-javalogging</url>-->
-            <!--<url>https://splunk.artifactoryonline.com/artifactory/ext-releases-local/</url>-->
+            <url>https://splunk.artifactoryonline.com/artifactory/ext-releases-local</url>
         </repository>
     </repositories>
 
